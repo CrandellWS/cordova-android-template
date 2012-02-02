@@ -2,7 +2,7 @@ package __ID__;
 
 import android.app.Activity;
 import android.os.Bundle;
-import com.phonegap.*;
+import org.apache.cordova.*;
 
 public class __ACTIVITY__ extends DroidGap
 {

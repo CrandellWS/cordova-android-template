@@ -1,13 +1,13 @@
 #! /bin/sh
 #
-# create a phonegap/android project
+# create a cordova/android project
 # 
 # USAGE
 #   ./create [path package activity]
 #
 
 # load up the config
-. ./.phonegap/config
+. ./.cordova/config
 
 PACKAGE_AS_PATH=$(echo $PACKAGE | sed 's/\./\//g')
 ACTIVITY_PATH=./src/$PACKAGE_AS_PATH/$ACTIVITY.java
@@ -16,17 +16,17 @@ MANIFEST_PATH=./AndroidManifest.xml
 # create the project
 android create project --target $TARGET --path . --package $PACKAGE --activity $ACTIVITY
 
-# copy all the phonegap scripts etc in there
-cp -R ./phonegap/templates/project/* .
+# copy all the cordova scripts etc in there
+cp -R ./cordova/templates/project/* .
 
-# copy in phonegap.js
-cp ./.phonegap/android/phonegap-$VERSION.js ./assets/www
+# copy in cordova.js
+cp ./.cordova/android/cordova-$VERSION.js ./assets/www
 
-# copy in phonegap.jar
-cp ./.phonegap/android/phonegap-$VERSION.jar ./libs
+# copy in cordova.jar
+cp ./.cordova/android/cordova-$VERSION.jar ./libs
 
 # copy in default activity
-cat ./phonegap/templates/Activity.java > $ACTIVITY_PATH
+cat ./cordova/templates/Activity.java > $ACTIVITY_PATH
 
 # interpolate the acivity name and package
 find "$ACTIVITY_PATH" | xargs grep '__ACTIVITY__' -sl | xargs -L1 sed -i -e "s/__ACTIVITY__/${ACTIVITY}/g"

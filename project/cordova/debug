@@ -1,6 +1,6 @@
 #! /bin/sh
 
-. ./.phonegap/config
+. ./.cordova/config
 
 # if there are no devices listed then emulate
 
